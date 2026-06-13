@@ -1,0 +1,78 @@
+<h1>Development</h1>
+
+<h2>Project Structure</h2>
+<pre>freefsm/
+├── cmd/freefsm/           # Entry point + static file embed
+│   └── static/            # CSS, JS (Pico, HTMX, Alpine)
+├── internal/
+│   ├── config/            # Env loading + DSN builder
+│   ├── database/          # pgxpool connection + SQL migration runner
+│   │   └── migrations/    # SQL migration files
+│   ├── ent/
+│   │   └── schema/        # ent schema definitions
+│   ├── handlers/          # HTTP handlers (chi routes)
+│   ├── middleware/         # Auth, Flash, user context
+│   ├── services/          # Business logic (ent queries)
+│   └── templates/         # Templ files (pages + partials)
+├── deploy/
+│   ├── freebsd/           # rc.d service script
+│   └── linux/             # systemd unit + config sample
+├── Makefile               # build, install, fmt, lint, test
+├── PLAN.md                # Full roadmap + architecture
+└── go.mod</pre>
+
+<h2>Build Commands</h2>
+<pre>make build       <span class="comment"># ent generate → templ generate → go build → dist/freefsm</span>
+make run         <span class="comment"># build + run</span>
+make fmt         <span class="comment"># go fmt ./...</span>
+make lint        <span class="comment"># go vet ./...</span>
+make clean       <span class="comment"># remove dist/</span></pre>
+
+<h2>Adding a New Entity</h2>
+<p>Follow these steps to add a new entity type:</p>
+<ol>
+  <li>Create a SQL migration in <code>internal/database/migrations/</code></li>
+  <li>Define an ent schema in <code>internal/ent/schema/</code></li>
+  <li>Run <code>ent generate ./internal/ent/schema</code></li>
+  <li>Create a service in <code>internal/services/</code></li>
+  <li>Create a handler in <code>internal/handlers/</code></li>
+  <li>Create templates in <code>internal/templates/</code></li>
+  <li>Register routes in <code>internal/handlers/router.go</code></li>
+</ol>
+
+<h2>Tech Stack</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Layer</th>
+      <th>Choice</th>
+      <th>Why</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Language</td><td>Go</td><td>Single binary, cross-compiles to FreeBSD/Linux</td>
+    </tr>
+    <tr>
+      <td>Router</td><td>chi</td><td>Lightweight, idiomatic Go router</td>
+    </tr>
+    <tr>
+      <td>Database</td><td>PostgreSQL</td><td>JSONB, TIMESTAMPTZ, full-text search</td>
+    </tr>
+    <tr>
+      <td>ORM</td><td>ent</td><td>Type-safe code generation</td>
+    </tr>
+    <tr>
+      <td>Templates</td><td>Templ</td><td>Compile-time type safety for templates</td>
+    </tr>
+    <tr>
+      <td>Interactivity</td><td>HTMX 2 + Alpine.js</td><td>Server-driven UI with minimal client JS</td>
+    </tr>
+    <tr>
+      <td>CSS</td><td>Pico CSS</td><td>Minimal, semantic, accessible</td>
+    </tr>
+    <tr>
+      <td>Deploy</td><td>systemd + rc.d</td><td>Native platform service management</td>
+    </tr>
+  </tbody>
+</table>

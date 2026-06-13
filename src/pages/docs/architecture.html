@@ -1,0 +1,68 @@
+<h1>Architecture</h1>
+
+<h2>System Architecture</h2>
+<pre>┌─────────────────────────────────────────┐
+│            Go Binary (chi)              │
+│  ┌──────────────┬────────────────────┐  │
+│  │  Web UI      │    REST API       │  │
+│  │ (Templ+HTMX) │    (JSON API)     │  │
+│  ├──────────────┴────────────────────┤  │
+│  │       Services (CQRS-lite)       │  │
+│  ├──────────────────────────────────┤  │
+│  │   ent ORM + entpoly (polymorph)  │  │
+│  │   sqlc (complex queries)          │  │
+│  ├──────────────────────────────────┤  │
+│  │     PostgreSQL (JSONB columns)   │  │
+│  └──────────────────────────────────┘  │
+│  FreeBSD rc.d / systemd / Makefile     │
+└─────────────────────────────────────────┘</pre>
+
+<h2>Tech Stack Rationale</h2>
+
+<h3>Go</h3>
+<p>Single static binary with zero runtime dependencies. Cross-compiles to both FreeBSD and Linux from a single build machine. Excellent standard library with built-in HTTP server, templating, and testing.</p>
+
+<h3>chi Router</h3>
+<p>Lightweight, idiomatic, and composable. Middleware chaining and route grouping map cleanly to the module structure.</p>
+
+<h3>PostgreSQL + JSONB</h3>
+<p>Line items, payments, visits, assignments, and custom fields are stored as JSONB columns. These are value objects &mdash; always fetched with their parent and never queried independently. JSONB avoids joins, enforces snapshot semantics, and supports indexing when needed. This is the same approach used by Invoice Ninja in production.</p>
+
+<h3>ent ORM + entpoly</h3>
+<p>Type-safe code generation for database access. The entpoly extension adds first-class support for polymorphic relations (tags, comments, locations, custom fields). Eager loading with batching eliminates N+1 query problems.</p>
+
+<h3>Templ + HTMX + Alpine.js</h3>
+<p>Templ provides compile-time safety for HTML templates. HTMX enables server-driven interactivity without writing JavaScript &mdash; links and forms issue AJAX requests and swap HTML fragments. Alpine.js handles client-side state for the calendar and line items editor. Zero npm dependencies, no build step for front-end code.</p>
+
+<h2>Key Database Design Decisions</h2>
+
+<h3>JSONB Columns (not separate tables)</h3>
+<p>Several entity attributes use JSONB instead of separate tables:</p>
+<ul>
+  <li><code>invoices.line_items</code> &mdash; Item snapshots with quantities, prices, taxes</li>
+  <li><code>invoices.payments</code> &mdash; Payment records attached to invoices</li>
+  <li><code>estimates.line_items</code> &mdash; Same structure as invoices</li>
+  <li><code>jobs.visits</code> &mdash; Multi-visit scheduling with arrival windows</li>
+  <li><code>jobs.assignments</code> &mdash; Team and user assignments</li>
+  <li><code>entities.custom_fields</code> &mdash; Extensible fields on customers, jobs, invoices</li>
+</ul>
+
+<h3>Polymorphic Relations</h3>
+<p>Tags, comments, and locations use a polymorphic pattern with <code>object_type</code> + <code>object_id</code> columns, enabling a single table to attach to any entity type.</p>
+
+<h3>Status Workflow System</h3>
+<p>Jobs, estimates, and invoices share a configurable workflow system. <code>status_workflows</code> define the available statuses per entity type, with ordering and color. Statuses can be system defaults or user-defined custom workflows.</p>
+
+<h3>Line Items Architecture</h3>
+<p>When an estimate or invoice is created, line items are copied from the pricebook as JSONB snapshots. This ensures that changing a pricebook price never retroactively alters existing documents. Each line item captures: item ID, title, description, unit price, quantity, taxable flag, tax rate, discounts, and surcharges.</p>
+
+<h2>Key Patterns</h2>
+
+<h3>Polymorphic Relations</h3>
+<p>Built via <code>entpoly</code>. Tags, custom fields, comments, and locations use <code>object_type</code> + <code>object_id</code> to attach to multiple entity types.</p>
+
+<h3>Assignment Pattern</h3>
+<p>Jobs, material lists, and subtasks use JSONB arrays with <code>team_id</code> + <code>assigned_members[]</code> for flexible team-based assignments.</p>
+
+<h3>Standardized Query System</h3>
+<p>All list endpoints support: <code>limit</code>, <code>page</code>, <code>search</code>, <code>sort_by</code>/<code>sort_dir</code>, <code>filter[]</code>, <code>rel[]</code> (eager loading), <code>calculate_count</code>.</p>

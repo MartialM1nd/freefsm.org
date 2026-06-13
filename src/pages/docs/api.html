@@ -1,0 +1,69 @@
+<h1>API Reference</h1>
+<p>FreeFSM exposes a REST API with 113 endpoints across 26 resource groups (planned for Phase 4). All endpoints use <code>x-api-key</code> header authentication.</p>
+
+<h2>Standard Query Parameters</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><code>limit</code></td><td>Results per page</td></tr>
+    <tr><td><code>page</code></td><td>Page number</td></tr>
+    <tr><td><code>search</code></td><td>Full-text search query</td></tr>
+    <tr><td><code>filter[]</code></td><td>Array of field filters</td></tr>
+    <tr><td><code>sort[]</code></td><td>Array of sort fields with direction</td></tr>
+    <tr><td><code>rel[]</code></td><td>Eager loading for related resources</td></tr>
+  </tbody>
+</table>
+
+<h2>Resource Groups</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Group</th>
+      <th>Endpoints</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><code>/customers</code></td><td>5</td><td>Customer CRUD</td></tr>
+    <tr><td><code>/customers/:id/customer-contact</code></td><td>5</td><td>Customer contact CRUD</td></tr>
+    <tr><td><code>/jobs</code></td><td>7</td><td>Job CRUD + status workflows</td></tr>
+    <tr><td><code>/invoices</code></td><td>8</td><td>Invoice CRUD + price update + status</td></tr>
+    <tr><td><code>/estimates</code></td><td>7</td><td>Estimate CRUD + status workflows</td></tr>
+    <tr><td><code>/items</code></td><td>4</td><td>Pricebook CRUD</td></tr>
+    <tr><td><code>/projects</code></td><td>5</td><td>Project CRUD</td></tr>
+    <tr><td><code>/payments</code></td><td>5</td><td>Payment CRUD</td></tr>
+    <tr><td><code>/locations</code></td><td>5</td><td>Location CRUD</td></tr>
+    <tr><td><code>/purchase-orders</code></td><td>5</td><td>Purchase order CRUD</td></tr>
+    <tr><td><code>/assets</code></td><td>5</td><td>Asset CRUD</td></tr>
+    <tr><td><code>/assets-category</code></td><td>5</td><td>Asset category CRUD</td></tr>
+    <tr><td><code>/material-list</code></td><td>7</td><td>Material list CRUD + connect/disconnect</td></tr>
+    <tr><td><code>/subtasks</code></td><td>5</td><td>Subtask CRUD</td></tr>
+    <tr><td><code>/timesheets</code></td><td>5</td><td>Timesheet CRUD</td></tr>
+    <tr><td><code>/tags</code></td><td>5</td><td>Tag CRUD</td></tr>
+    <tr><td><code>/custom-fields</code></td><td>5</td><td>Custom field definition CRUD</td></tr>
+    <tr><td><code>/comments</code></td><td>5</td><td>Comment CRUD</td></tr>
+    <tr><td><code>/users</code></td><td>1</td><td>List users</td></tr>
+    <tr><td><code>/teams</code></td><td>1</td><td>List teams</td></tr>
+    <tr><td><code>/vendors</code></td><td>2</td><td>List and view vendors</td></tr>
+    <tr><td><code>/lead-source</code></td><td>1</td><td>List lead sources</td></tr>
+    <tr><td><code>/pipeline-status</code></td><td>1</td><td>List pipeline statuses</td></tr>
+    <tr><td><code>/contracts</code></td><td>2</td><td>List and view contracts</td></tr>
+    <tr><td><code>/company-profile</code></td><td>2</td><td>List and view company profiles</td></tr>
+    <tr><td><code>/version</code></td><td>1</td><td>API version</td></tr>
+  </tbody>
+</table>
+
+<h2>Webhook Events</h2>
+<p>The webhook system (Phase 4) will fire events for:</p>
+<ul>
+  <li>Job Created / Custom Status Update / Start Time Update / End Time Update</li>
+  <li>Estimate Created / Custom Status Update / Workflow Status Update</li>
+  <li>Invoice Created / Custom Status Update / Workflow Status Update</li>
+</ul>
+
+<p>Polymorphic relations use <code>object_type</code> + <code>object_id</code> throughout, and all request/response bodies use JSON.</p>

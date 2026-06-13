@@ -1,0 +1,64 @@
+<h1>Configuration</h1>
+<p>All configuration is done through environment variables. Copy <code>.env.example</code> to <code>.env</code> and edit as needed.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>FREEFSM_DB_HOST</code></td>
+      <td><code>localhost</code></td>
+      <td>PostgreSQL host</td>
+    </tr>
+    <tr>
+      <td><code>FREEFSM_DB_PORT</code></td>
+      <td><code>5432</code></td>
+      <td>PostgreSQL port</td>
+    </tr>
+    <tr>
+      <td><code>FREEFSM_DB_NAME</code></td>
+      <td><code>freefsm</code></td>
+      <td>Database name</td>
+    </tr>
+    <tr>
+      <td><code>FREEFSM_DB_USER</code></td>
+      <td><code>freefsm</code></td>
+      <td>Database user</td>
+    </tr>
+    <tr>
+      <td><code>FREEFSM_DB_PASSWORD</code></td>
+      <td><em>required</em></td>
+      <td>Database password</td>
+    </tr>
+    <tr>
+      <td><code>FREEFSM_DB_SSLMODE</code></td>
+      <td><code>disable</code></td>
+      <td>PostgreSQL SSL mode</td>
+    </tr>
+    <tr>
+      <td><code>FREEFSM_ADDR</code></td>
+      <td><code>:3000</code></td>
+      <td>HTTP listen address</td>
+    </tr>
+    <tr>
+      <td><code>FREEFSM_LOG_LEVEL</code></td>
+      <td><code>info</code></td>
+      <td>Log level: <code>debug</code>, <code>info</code>, <code>warn</code>, <code>error</code></td>
+    </tr>
+    <tr>
+      <td><code>FREEFSM_SESSION_SECRET</code></td>
+      <td><em>required</em></td>
+      <td>Cookie encryption key</td>
+    </tr>
+    <tr>
+      <td><code>FREEFSM_SETUP_TOKEN</code></td>
+      <td><em>required</em></td>
+      <td>Initial admin registration token</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,101 @@
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Features</h2>
+      <p>A comprehensive field service management platform, built for self-hosting.</p>
+    </div>
+
+    <div class="feature-detail">
+      <div class="feature-detail-header">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+        </svg>
+        <h2>Dashboard</h2>
+      </div>
+      <p>The central hub of your field service operation. The dashboard provides an at-a-glance overview of your business with quick access to every module. Key performance indicators, recent jobs, upcoming schedules, and outstanding invoices are all visible from one screen.</p>
+    </div>
+
+    <div class="feature-detail">
+      <div class="feature-detail-header">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+        <h2>Customers</h2>
+      </div>
+      <p>A complete customer relationship management module. Track individuals and companies with full contact details, billing and service addresses, pipeline status, and lead sources. The search and filter system makes finding customers fast, and HTMX-powered pagination keeps the interface snappy even with thousands of records. Each customer supports multiple contacts, locations, and custom fields.</p>
+      <ul>
+        <li><strong>CRUD</strong> &mdash; Create, view, edit, and delete customers</li>
+        <li><strong>Search &amp; filter</strong> &mdash; Full-text search with status and pipeline filters</li>
+        <li><strong>Contacts</strong> &mdash; Multiple contacts per customer with inline editing</li>
+        <li><strong>Custom fields</strong> &mdash; Extensible JSONB fields for your unique data</li>
+      </ul>
+    </div>
+
+    <div class="feature-detail">
+      <div class="feature-detail-header">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+        </svg>
+        <h2>Jobs &amp; Work Orders</h2>
+      </div>
+      <p>The core of field service operations. Jobs support a configurable status workflow that adapts to your business process, not the other way around. Schedule visits with arrival windows, assign teams and individual technicians, and track everything from initial dispatch to completion.</p>
+      <ul>
+        <li><strong>Status workflows</strong> &mdash; Configurable, not hardcoded enums</li>
+        <li><strong>Multi-visit</strong> &mdash; Support for jobs requiring multiple visits</li>
+        <li><strong>Arrival windows</strong> &mdash; Schedule specific time windows for each visit</li>
+        <li><strong>Assignments</strong> &mdash; Assign teams and individual members via JSONB</li>
+        <li><strong>Notes</strong> &mdash; Internal notes and customer-facing field notes</li>
+      </ul>
+    </div>
+
+    <div class="feature-detail">
+      <div class="feature-detail-header">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+        <h2>Schedule Calendar</h2>
+      </div>
+      <p>A month-view calendar that shows all scheduled jobs at a glance. Click any job card for full details. Filter by team, user, or status to focus on what matters. Alpine.js powers the interactive calendar experience without any heavy JavaScript frameworks.</p>
+    </div>
+
+    <div class="feature-detail">
+      <div class="feature-detail-header">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+        </svg>
+        <h2>Estimates</h2>
+      </div>
+      <p>Create professional estimates with a line items editor that pulls from your pricebook. Line items are snapshotted at creation time, so changing a pricebook price won't affect existing estimates. Configurable status workflow (draft &rarr; sent &rarr; approved &rarr; rejected) and automatic tax calculation are built in. Convert approved estimates directly into jobs and invoices.</p>
+    </div>
+
+    <div class="feature-detail">
+      <div class="feature-detail-header">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+        </svg>
+        <h2>Invoices</h2>
+      </div>
+      <p>Full invoicing with line items from your pricebook, payment tracking, and status workflow (draft &rarr; invoiced &rarr; paid &rarr; void). Record partial or full payments directly on the invoice, with payment method and reference tracking. PDF generation is included, with plans for pixel-perfect rendering via headless Chromium.</p>
+    </div>
+
+    <div class="feature-detail">
+      <div class="feature-detail-header">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+        </svg>
+        <h2>Items / Pricebook</h2>
+      </div>
+      <p>Your service and product catalog with SKU tracking, unit pricing, cost tracking, and tax configuration. Items are organized by type (service or product) and can be marked active or inactive. When creating estimates or invoices, items are copied as line item snapshots, ensuring historical accuracy.</p>
+    </div>
+
+    <div class="feature-detail">
+      <div class="feature-detail-header">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+        <h2>Auth &amp; Security</h2>
+      </div>
+      <p>Secure authentication using bcrypt password hashing and HTTP-only session cookies. The initial admin account is created using a setup token from your environment configuration, preventing unauthorized registration. Role-based access controls (admin, tech, dispatcher) allow fine-grained permission management.</p>
+    </div>
+  </div>
+</section>

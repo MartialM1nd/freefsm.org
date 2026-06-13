@@ -1,0 +1,67 @@
+<h1>User Guide</h1>
+<p>FreeFSM is organized into modules accessible from the sidebar. This guide covers each module's purpose and key features.</p>
+
+<h2>Dashboard</h2>
+<p>The Dashboard is the first screen you see after logging in. It provides an overview of key metrics and quick access to all modules. Future versions will include revenue totals, job status breakdowns, and upcoming schedules.</p>
+
+<h2>Customers</h2>
+<p>The Customers module manages your customer database. Each customer record includes:</p>
+<ul>
+  <li><strong>Contact information</strong> &mdash; Name, email, phone, company name</li>
+  <li><strong>Addresses</strong> &mdash; Billing and service addresses</li>
+  <li><strong>Status</strong> &mdash; Lead, opportunity, customer, lost, inactive</li>
+  <li><strong>Pipeline tracking</strong> &mdash; Pipeline status and lead source</li>
+  <li><strong>Contacts</strong> &mdash; Multiple contacts per customer</li>
+  <li><strong>Custom fields</strong> &mdash; Extensible fields stored as JSONB</li>
+</ul>
+<p>Search across all customers, filter by status, and navigate results with HTMX-powered pagination.</p>
+
+<h2>Jobs / Work Orders</h2>
+<p>Jobs are the core operational unit in FreeFSM. Each job represents a field service visit or work order.</p>
+<ul>
+  <li><strong>Status workflow</strong> &mdash; Configurable statuses (not hardcoded enums)</li>
+  <li><strong>Visits</strong> &mdash; Multi-visit jobs with arrival windows per visit</li>
+  <li><strong>Assignments</strong> &mdash; Teams and individual technicians assigned via JSONB</li>
+  <li><strong>Scheduling</strong> &mdash; Start/end times, due dates, arrival windows</li>
+  <li><strong>Billing type</strong> &mdash; Configurable billing model per job</li>
+  <li><strong>Notes</strong> &mdash; Internal notes and field notes visible to technicians</li>
+</ul>
+
+<h2>Schedule Calendar</h2>
+<p>The Schedule Calendar displays jobs in a month view. Click any job card to see details. Filter by team, user, or status to focus your view. Powered by Alpine.js for a smooth client-side experience.</p>
+
+<h2>Estimates</h2>
+<p>Create estimates using line items from your pricebook. Line items are snapshotted at creation time to preserve historical accuracy.</p>
+<ul>
+  <li><strong>Line items editor</strong> &mdash; Add items from the pricebook with quantities and prices</li>
+  <li><strong>Status workflow</strong> &mdash; Draft, sent, approved, rejected</li>
+  <li><strong>Tax calculation</strong> &mdash; Per-item or overall tax rates</li>
+  <li><strong>Conversion</strong> &mdash; Convert approved estimates to jobs and invoices</li>
+</ul>
+
+<h2>Invoices</h2>
+<p>Generate invoices from line items, with payment tracking and status management.</p>
+<ul>
+  <li><strong>Line items</strong> &mdash; Copied from pricebook as snapshots</li>
+  <li><strong>Payments</strong> &mdash; Record partial or full payments with method and reference</li>
+  <li><strong>Status workflow</strong> &mdash; Draft, invoiced, paid, void</li>
+  <li><strong>PDF generation</strong> &mdash; Basic PDF via maroto (MVP), Chromium-based planned</li>
+</ul>
+
+<h2>Items / Pricebook</h2>
+<p>Manage your service and product catalog. Each item includes:</p>
+<ul>
+  <li><strong>Type</strong> &mdash; Service or product</li>
+  <li><strong>SKU</strong> &mdash; Unique stock keeping unit identifier</li>
+  <li><strong>Pricing</strong> &mdash; Unit price and cost tracking</li>
+  <li><strong>Tax</strong> &mdash; Taxable flag and tax rate</li>
+  <li><strong>Status</strong> &mdash; Active or inactive</li>
+</ul>
+
+<h2>Auth &amp; User Management</h2>
+<p>FreeFSM uses bcrypt-hashed passwords and HTTP-only session cookies for authentication. The initial admin account is created via a setup token. Three roles are supported:</p>
+<ul>
+  <li><strong>Admin</strong> &mdash; Full system access</li>
+  <li><strong>Tech</strong> &mdash; Field technician access</li>
+  <li><strong>Dispatcher</strong> &mdash; Scheduling and dispatch access</li>
+</ul>

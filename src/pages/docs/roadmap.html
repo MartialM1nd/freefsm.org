@@ -1,0 +1,103 @@
+<h1>Roadmap</h1>
+<p>FreeFSM is developed in five phases, from foundation to advanced integrations.</p>
+
+<h2>Phase 0 &mdash; Foundation</h2>
+<p>Project scaffolding and infrastructure:</p>
+<ul>
+  <li><code>go.mod</code>, <code>Makefile</code>, <code>.gitignore</code>, <code>README.md</code></li>
+  <li>Config system: env vars + CLI flags + optional YAML</li>
+  <li>PostgreSQL connection + migration runner</li>
+  <li><code>ent</code> schema setup + <code>entpoly</code> for polymorphic relations</li>
+  <li><code>sqlc</code> config + first generated query</li>
+  <li><code>Templ</code> setup + first render test</li>
+  <li>FreeBSD rc.d script + Linux systemd unit</li>
+  <li><code>make install</code> target</li>
+</ul>
+
+<h2>Phase 1 &mdash; MVP</h2>
+<p>Core functionality: Auth, Customers, Jobs, Schedule, Invoices, Estimates, Items</p>
+
+<h3>Step 1: Auth + UI Shell</h3>
+<ul>
+  <li>Setup token for initial admin registration</li>
+  <li>Login/logout with bcrypt + session cookies</li>
+  <li>Base Templ layout with sidebar navigation</li>
+  <li>Flash messages, CSRF protection</li>
+</ul>
+
+<h3>Step 2: Customers</h3>
+<ul>
+  <li>Customer CRUD (list, create, view, edit, delete)</li>
+  <li>Search + filter + HTMX pagination</li>
+  <li>Customer contacts (nested CRUD inline)</li>
+  <li>Customer locations (polymorphic base)</li>
+  <li>Pipeline status + lead source selection</li>
+  <li>Custom fields as JSONB</li>
+</ul>
+
+<h3>Step 3: Jobs / Work Orders</h3>
+<ul>
+  <li>Job CRUD with configurable status workflow</li>
+  <li>Job assignments (team + user) via JSONB</li>
+  <li>Multi-visit support via JSONB <code>visits</code></li>
+  <li>Arrival window scheduling</li>
+  <li>Job notes + field notes</li>
+  <li>Polymorphic tags + comments on jobs</li>
+</ul>
+
+<h3>Step 4: Schedule / Dispatch</h3>
+<ul>
+  <li>Calendar view (month/week/day) using Alpine.js</li>
+  <li>Drag-and-drop status changes</li>
+  <li>Filter by team/user/status</li>
+</ul>
+
+<h3>Step 5: Items / Pricebook</h3>
+<ul>
+  <li>Item CRUD (service + product types)</li>
+  <li>SKU, price, cost, tax settings</li>
+  <li>Price tiers</li>
+</ul>
+
+<h3>Step 6: Estimates &amp; Invoices</h3>
+<ul>
+  <li>Create estimate with line items from pricebook</li>
+  <li>JSONB <code>line_items</code> (snapshot semantics)</li>
+  <li>Convert estimate &rarr; job &rarr; invoice</li>
+  <li>Invoice status workflow (draft &rarr; invoiced &rarr; paid &rarr; void)</li>
+  <li>Payment recording (JSONB <code>payments</code> on invoice)</li>
+  <li>Basic PDF generation via maroto</li>
+</ul>
+
+<h2>Phase 2 &mdash; Support Entities + Polish</h2>
+<ul>
+  <li>Projects (grouping jobs under a customer)</li>
+  <li>Subtasks (job checklists)</li>
+  <li>Polymorphic tags system (admin-configurable)</li>
+  <li>Polymorphic custom fields (admin-configurable)</li>
+  <li>Polymorphic comments</li>
+  <li>Dashboard with real KPIs</li>
+  <li>Global search across customers, jobs, invoices</li>
+  <li>Nginx reverse proxy config</li>
+</ul>
+
+<h2>Phase 3 &mdash; Operations</h2>
+<ul>
+  <li>Timesheets (clock in/out)</li>
+  <li>Assets + asset categories (equipment tracking)</li>
+  <li>Purchase orders + vendors</li>
+  <li>Material lists (grouped line items)</li>
+  <li>Lead sources + pipeline management</li>
+  <li>Recurring job / maintenance agreement templates</li>
+</ul>
+
+<h2>Phase 4 &mdash; Integration + Advanced</h2>
+<ul>
+  <li>REST API covering 113 standardized endpoints</li>
+  <li>Webhook system (standard webhook events)</li>
+  <li>Chromium-based PDF rendering</li>
+  <li>QuickBooks export (QBO/QBD)</li>
+  <li>Customer portal / self-service booking</li>
+  <li>Zapier-compatible webhook triggers</li>
+  <li>Mobile-responsive UI refinements</li>
+</ul>

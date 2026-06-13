@@ -1,0 +1,56 @@
+<h1>Deployment</h1>
+<p>FreeFSM compiles to a single static binary with embedded assets, making deployment straightforward on both Linux and FreeBSD.</p>
+
+<h2>Linux (systemd)</h2>
+<p>The Makefile includes an <code>install-linux</code> target that builds the binary and installs it alongside a systemd service unit:</p>
+<pre>make install-linux</pre>
+<p>This installs:</p>
+<ul>
+  <li>The binary to <code>/usr/local/bin/freefsm</code></li>
+  <li>A systemd unit to <code>/etc/systemd/system/freefsm.service</code></li>
+</ul>
+<p>Start the service:</p>
+<pre>systemctl start freefsm
+systemctl enable freefsm</pre>
+
+<h2>FreeBSD (rc.d)</h2>
+<p>Similarly, the <code>install-freebsd</code> target handles FreeBSD deployments:</p>
+<pre>make install-freebsd</pre>
+<p>This installs:</p>
+<ul>
+  <li>The binary to <code>/usr/local/bin/freefsm</code></li>
+  <li>An rc.d script to <code>/usr/local/etc/rc.d/freefsm</code></li>
+</ul>
+<p>Start the service:</p>
+<pre>service freefsm start
+sysrc freefsm_enable=YES</pre>
+
+<h2>Makefile Targets</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Target</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><code>make build</code></td><td>Generate ent, templ, then compile Go binary</td></tr>
+    <tr><td><code>make run</code></td><td>Build and run the server</td></tr>
+    <tr><td><code>make install-linux</code></td><td>Build and install for Linux with systemd</td></tr>
+    <tr><td><code>make install-freebsd</code></td><td>Build and install for FreeBSD with rc.d</td></tr>
+    <tr><td><code>make fmt</code></td><td>Format Go source code</td></tr>
+    <tr><td><code>make lint</code></td><td>Run go vet</td></tr>
+    <tr><td><code>make clean</code></td><td>Remove build artifacts</td></tr>
+  </tbody>
+</table>
+
+<h2>Environment File</h2>
+<p>Create a <code>.env</code> file in the same directory as the binary, or set environment variables via your service manager:</p>
+<pre>FREEFSM_DB_HOST=localhost
+FREEFSM_DB_PORT=5432
+FREEFSM_DB_NAME=freefsm
+FREEFSM_DB_USER=freefsm
+FREEFSM_DB_PASSWORD=your_password_here
+FREEFSM_SESSION_SECRET=your_secret_here
+FREEFSM_SETUP_TOKEN=your_setup_token_here</pre>
+<p>See the <a href="/docs/configuration.html">Configuration Reference</a> for all available variables.</p>

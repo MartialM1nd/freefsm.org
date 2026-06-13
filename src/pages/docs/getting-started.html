@@ -1,0 +1,42 @@
+<h1>Getting Started</h1>
+
+<h2>Prerequisites</h2>
+<ul>
+  <li><strong>Go 1.25+</strong></li>
+  <li><strong>PostgreSQL 15+</strong></li>
+  <li><code>ent</code> CLI: <code>go install entgo.io/ent/cmd/ent@latest</code></li>
+  <li><code>templ</code> CLI: <code>go install github.com/a-h/templ/cmd/templ@latest</code></li>
+</ul>
+<p>Ensure <code>$HOME/go/bin</code> is in your <code>$PATH</code>.</p>
+
+<h2>Database Setup</h2>
+<p>Create a PostgreSQL user and database:</p>
+<pre>CREATE USER freefsm WITH PASSWORD 'changeme';
+CREATE DATABASE freefsm OWNER freefsm;
+GRANT ALL PRIVILEGES ON DATABASE freefsm TO freefsm;</pre>
+<p>If using Fedora or any system with ident/peer auth, edit <code>pg_hba.conf</code> and change <code>local</code> and <code>127.0.0.1</code> entries from <code>ident</code>/<code>peer</code> to <code>md5</code>, then restart PostgreSQL.</p>
+
+<h2>Build &amp; Run</h2>
+<pre>git clone https://github.com/MartialM1nd/freefsm.git
+cd freefsm
+cp .env.example .env
+<span class="comment"># Edit .env: set DB_PASSWORD, SESSION_SECRET, SETUP_TOKEN</span>
+
+make run
+<span class="comment"># → http://localhost:3000</span></pre>
+
+<h2>First-Time Setup</h2>
+<ol>
+  <li>Visit <code>http://localhost:3000</code> &mdash; you'll be redirected to <code>/setup</code></li>
+  <li>Enter your <code>FREEFSM_SETUP_TOKEN</code> value (from <code>.env</code>)</li>
+  <li>Create an admin account (name, email, password)</li>
+  <li>You're logged in and on the Dashboard</li>
+</ol>
+
+<h2>Development Commands</h2>
+<pre>make build       <span class="comment"># ent generate → templ generate → go build → dist/freefsm</span>
+make run         <span class="comment"># build + run</span>
+make fmt         <span class="comment"># go fmt ./...</span>
+make lint        <span class="comment"># go vet ./...</span>
+make clean       <span class="comment"># remove dist/</span>
+make install     <span class="comment"># install to /usr/local/bin</span></pre>
