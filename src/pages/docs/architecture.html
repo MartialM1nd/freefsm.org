@@ -66,3 +66,25 @@
 
 <h3>Standardized Query System</h3>
 <p>All list endpoints support: <code>limit</code>, <code>page</code>, <code>search</code>, <code>sort_by</code>/<code>sort_dir</code>, <code>filter[]</code>, <code>rel[]</code> (eager loading), <code>calculate_count</code>.</p>
+
+<h2>Multi-Tenant Architecture (Future)</h2>
+<p>The codebase is designed for single-tenant, self-hosted deployment today but is future-proofed for multi-tenant SaaS. The core project remains single-tenant; a future <code>saas</code> branch will implement full tenant isolation.</p>
+
+<h3>Approach: Row-Level Isolation</h3>
+<p>Every entity table has a nullable <code>company_id</code> column (no-op in single-tenant mode). In multi-tenant mode:</p>
+<ul>
+  <li><strong>Tenant Resolution</strong> &mdash; <code>Host</code> header parsed for subdomain (<code>acme.freefsm.com</code> &rarr; <code>acme</code> slug)</li>
+  <li><strong>Tenant Lookup</strong> &mdash; Subdomain resolved to <code>company_id</code> via a <code>companies</code> table</li>
+  <li><strong>Query Scoping</strong> &mdash; All service queries add <code>.Where(table.CompanyIDEQ(tenantID))</code></li>
+  <li><strong>User Isolation</strong> &mdash; <code>users.company_id</code> FK ensures each user belongs to one company</li>
+  <li><strong>Settings Isolation</strong> &mdash; <code>company_settings</code> becomes one row per company</li>
+</ul>
+
+<h3>Infrastructure Already in Place</h3>
+<ul>
+  <li><code>company_id</code> on all ent schemas (optional, nillable)</li>
+  <li><code>Tenant</code> middleware &mdash; no-op in single-tenant mode, future branch implements subdomain lookup</li>
+  <li><code>UserInfo.CompanyID</code> &mdash; carried in middleware for future tenant context propagation</li>
+  <li><code>companies</code> table &mdash; stores <code>name</code>, <code>slug</code>, <code>hostname</code>, <code>is_active</code></li>
+  <li>Handlers require zero changes &mdash; all tenant logic lives in services and middleware</li>
+</ul>

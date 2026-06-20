@@ -11,22 +11,27 @@
 │   ├── ent/
 │   │   └── schema/        # ent schema definitions
 │   ├── handlers/          # HTTP handlers (chi routes)
-│   ├── middleware/         # Auth, Flash, user context
+│   ├── middleware/         # Auth, Flash, user context, CSRF
 │   ├── services/          # Business logic (ent queries)
 │   └── templates/         # Templ files (pages + partials)
 ├── deploy/
 │   ├── freebsd/           # rc.d service script
-│   └── linux/             # systemd unit + config sample
+│   ├── linux/             # systemd unit + config sample
+│   └── README.md          # Detailed deployment guide
+├── AGENTS.md              # Agent guidelines
 ├── Makefile               # build, install, fmt, lint, test
 ├── PLAN.md                # Full roadmap + architecture
 └── go.mod</pre>
 
 <h2>Build Commands</h2>
-<pre>make build       <span class="comment"># ent generate → templ generate → go build → dist/freefsm</span>
-make run         <span class="comment"># build + run</span>
-make fmt         <span class="comment"># go fmt ./...</span>
-make lint        <span class="comment"># go vet ./...</span>
-make clean       <span class="comment"># remove dist/</span></pre>
+<pre>make build            <span class="comment"># ent generate → templ generate → go build → dist/freefsm</span>
+make run              <span class="comment"># build + run</span>
+make fmt              <span class="comment"># go fmt ./...</span>
+make lint             <span class="comment"># go vet ./...</span>
+make clean            <span class="comment"># remove dist/</span>
+make checksum         <span class="comment"># SHA256 of the binary</span>
+make install-linux    <span class="comment"># install binary + systemd unit</span>
+make install-freebsd  <span class="comment"># install binary + rc.d script</span></pre>
 
 <h2>Adding a New Entity</h2>
 <p>Follow these steps to add a new entity type:</p>

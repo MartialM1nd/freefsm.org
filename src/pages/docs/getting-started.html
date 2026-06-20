@@ -33,10 +33,20 @@ make run
   <li>You're logged in and on the Dashboard</li>
 </ol>
 
+<h2>Demo Data</h2>
+<p>Populate the database with sample HVAC-themed data (customers, jobs, assets, invoices, etc.) for testing:</p>
+<pre>./dist/freefsm -seed</pre>
+<p>This is idempotent &mdash; it skips seeding if any customers already exist.</p>
+
 <h2>Development Commands</h2>
-<pre>make build       <span class="comment"># ent generate → templ generate → go build → dist/freefsm</span>
-make run         <span class="comment"># build + run</span>
-make fmt         <span class="comment"># go fmt ./...</span>
-make lint        <span class="comment"># go vet ./...</span>
-make clean       <span class="comment"># remove dist/</span>
-make install     <span class="comment"># install to /usr/local/bin</span></pre>
+<pre>make build            <span class="comment"># ent generate → templ generate → go build → dist/freefsm</span>
+make run              <span class="comment"># build + run</span>
+make fmt              <span class="comment"># go fmt ./...</span>
+make lint             <span class="comment"># go vet ./...</span>
+make clean            <span class="comment"># remove dist/</span>
+make checksum         <span class="comment"># SHA256 of the binary</span>
+make install-linux    <span class="comment"># install binary + systemd unit</span>
+make install-freebsd  <span class="comment"># install binary + rc.d script</span></pre>
+
+<p>Run with a custom config file:</p>
+<pre>./dist/freefsm -config /usr/local/etc/freefsm.conf</pre>

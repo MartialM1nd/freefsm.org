@@ -1,7 +1,7 @@
 <section class="hero">
   <div class="container">
     <h1>Open-source field service<br>management for <span>FreeBSD &amp; Linux</span></h1>
-    <p>FreeFSM is a self-hosted, open-source field service management platform. One static Go binary, PostgreSQL backend, zero npm dependencies. Manage customers, jobs, schedules, estimates, and invoices &mdash; all from your own infrastructure.</p>
+    <p>FreeFSM is a self-hosted, open-source field service management platform. One static Go binary, PostgreSQL backend, zero npm dependencies. Manage customers, jobs, assets, projects, timesheets, estimates, invoices, and more &mdash; all from your own infrastructure.</p>
     <div class="hero-btns">
       <a href="/docs/getting-started.html" class="btn btn-primary">Get Started</a>
       <a href="https://github.com/MartialM1nd/freefsm" class="btn btn-secondary">View on GitHub</a>
@@ -21,35 +21,35 @@
           <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
         </svg>
         <h3>Dashboard</h3>
-        <p>Central overview with quick access to all modules &mdash; see your business at a glance.</p>
+        <p>KPI cards, calendar, quick actions, and global search &mdash; see your business at a glance.</p>
       </div>
       <div class="feature-card">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
         </svg>
         <h3>Customers</h3>
-        <p>Full CRUD with search, status filtering, HTMX pagination, and multi-contact support.</p>
+        <p>Full CRUD with search, status filtering, HTMX pagination, locations, and multi-contact support.</p>
       </div>
       <div class="feature-card">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
         </svg>
         <h3>Jobs &amp; Work Orders</h3>
-        <p>Configurable status workflows, scheduling, arrival windows, multi-visit support, and team assignments.</p>
+        <p>Configurable status workflows, scheduling, arrival windows, multi-visit support, subtasks, and team assignments.</p>
       </div>
       <div class="feature-card">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
         </svg>
-        <h3>Schedule Calendar</h3>
-        <p>Month view with clickable job cards, drag-and-drop status changes, and filter by team or user.</p>
+        <h3>Schedule</h3>
+        <p>Calendar and list views with clickable job cards, drag-and-drop status changes, and filter by team or user.</p>
       </div>
       <div class="feature-card">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
         </svg>
         <h3>Estimates</h3>
-        <p>Line items editor powered by Alpine.js, configurable status workflow, and built-in tax calculation.</p>
+        <p>Line items editor, tax calculation, PDF generation, and convert to invoice on approval.</p>
       </div>
       <div class="feature-card">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -67,10 +67,59 @@
       </div>
       <div class="feature-card">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><path d="M6 6h.01M6 18h.01"/>
+        </svg>
+        <h3>Assets</h3>
+        <p>Equipment tracking with types, statuses, manufacturer, model, serial numbers, and service history.</p>
+      </div>
+      <div class="feature-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+        </svg>
+        <h3>Projects</h3>
+        <p>Group jobs under a customer with progress tracking, nested work orders, and status overview.</p>
+      </div>
+      <div class="feature-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+        </svg>
+        <h3>Timesheets</h3>
+        <p>Clock in/out per user with GPS coordinates, manual entry, and job-linked time tracking.</p>
+      </div>
+      <div class="feature-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/>
+        </svg>
+        <h3>Tags &amp; Custom Fields</h3>
+        <p>Color-coded labels and user-defined fields on any object &mdash; customers, jobs, assets, invoices, and more.</p>
+      </div>
+      <div class="feature-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+        <h3>Comments</h3>
+        <p>Threaded notes on any object with timestamps and authorship tracking.</p>
+      </div>
+      <div class="feature-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        <h3>User Management</h3>
+        <p>Role-based access (admin, tech, dispatcher), welcome emails, password policies, and force password change.</p>
+      </div>
+      <div class="feature-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+        <h3>Company Settings</h3>
+        <p>Branding, email config, timezone, document numbering, security policies, and dark mode toggle.</p>
+      </div>
+      <div class="feature-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
         </svg>
         <h3>Auth &amp; Security</h3>
-        <p>Setup token for initial admin, bcrypt password hashing, and HTTP-only session cookies.</p>
+        <p>Setup token for initial admin, bcrypt password hashing, HTTP-only session cookies, and CSRF protection.</p>
       </div>
     </div>
   </div>
@@ -133,13 +182,13 @@ cp .env.example .env
         <h3 style="margin-top:0">Linux &mdash; systemd</h3>
         <div class="code-block" style="margin:12px 0 0">
 <pre><span class="cmd">make install-linux</span>
-<span class="cmd">systemctl start freefsm</span></pre>
+<span class="cmd">systemctl enable --now freefsm</span></pre>
         </div>
       </div>
       <div class="feature-card">
         <h3 style="margin-top:0">FreeBSD &mdash; rc.d</h3>
         <div class="code-block" style="margin:12px 0 0">
-<pre><span class="cmd">make install-freebsd</span>
+<pre><span class="cmd">gmake install-freebsd</span>
 <span class="cmd">service freefsm start</span></pre>
         </div>
       </div>

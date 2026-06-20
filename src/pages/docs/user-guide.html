@@ -2,7 +2,7 @@
 <p>FreeFSM is organized into modules accessible from the sidebar. This guide covers each module's purpose and key features.</p>
 
 <h2>Dashboard</h2>
-<p>The Dashboard is the first screen you see after logging in. It provides an overview of key metrics and quick access to all modules. Future versions will include revenue totals, job status breakdowns, and upcoming schedules.</p>
+<p>The Dashboard is the first screen you see after logging in. It provides an overview of key metrics including KPI cards for revenue, job counts, and status breakdowns. The calendar shows upcoming schedules and the global search bar lets you find customers, jobs, and invoices from one place. Quick action buttons provide one-click access to common tasks.</p>
 
 <h2>Customers</h2>
 <p>The Customers module manages your customer database. Each customer record includes:</p>
@@ -12,6 +12,7 @@
   <li><strong>Status</strong> &mdash; Lead, opportunity, customer, lost, inactive</li>
   <li><strong>Pipeline tracking</strong> &mdash; Pipeline status and lead source</li>
   <li><strong>Contacts</strong> &mdash; Multiple contacts per customer</li>
+  <li><strong>Locations</strong> &mdash; Polymorphic locations attached to any object</li>
   <li><strong>Custom fields</strong> &mdash; Extensible fields stored as JSONB</li>
 </ul>
 <p>Search across all customers, filter by status, and navigate results with HTMX-powered pagination.</p>
@@ -22,13 +23,20 @@
   <li><strong>Status workflow</strong> &mdash; Configurable statuses (not hardcoded enums)</li>
   <li><strong>Visits</strong> &mdash; Multi-visit jobs with arrival windows per visit</li>
   <li><strong>Assignments</strong> &mdash; Teams and individual technicians assigned via JSONB</li>
+  <li><strong>Subtasks</strong> &mdash; Checklist items on jobs for step-by-step tracking</li>
   <li><strong>Scheduling</strong> &mdash; Start/end times, due dates, arrival windows</li>
   <li><strong>Billing type</strong> &mdash; Configurable billing model per job</li>
   <li><strong>Notes</strong> &mdash; Internal notes and field notes visible to technicians</li>
 </ul>
 
-<h2>Schedule Calendar</h2>
-<p>The Schedule Calendar displays jobs in a month view. Click any job card to see details. Filter by team, user, or status to focus your view. Powered by Alpine.js for a smooth client-side experience.</p>
+<h2>Schedule</h2>
+<p>The Schedule displays jobs in calendar and list views. Click any job card to see details. Filter by team, user, or status to focus your view. Powered by Alpine.js for a smooth client-side experience.</p>
+
+<h2>Assets</h2>
+<p>Track customer equipment with detailed asset records. Each asset includes manufacturer, model, serial number, install date, warranty information, and service history. Assets can be categorized, linked to customers and jobs, and tracked throughout their lifecycle.</p>
+
+<h2>Projects</h2>
+<p>Group related jobs under a project for better organization. Projects link to a customer and show progress through a completion percentage. View all nested jobs and their statuses from a single project overview page.</p>
 
 <h2>Estimates</h2>
 <p>Create estimates using line items from your pricebook. Line items are snapshotted at creation time to preserve historical accuracy.</p>
@@ -36,6 +44,7 @@
   <li><strong>Line items editor</strong> &mdash; Add items from the pricebook with quantities and prices</li>
   <li><strong>Status workflow</strong> &mdash; Draft, sent, approved, rejected</li>
   <li><strong>Tax calculation</strong> &mdash; Per-item or overall tax rates</li>
+  <li><strong>PDF generation</strong> &mdash; Generate professional PDF estimates</li>
   <li><strong>Conversion</strong> &mdash; Convert approved estimates to jobs and invoices</li>
 </ul>
 
@@ -58,10 +67,29 @@
   <li><strong>Status</strong> &mdash; Active or inactive</li>
 </ul>
 
-<h2>Auth &amp; User Management</h2>
-<p>FreeFSM uses bcrypt-hashed passwords and HTTP-only session cookies for authentication. The initial admin account is created via a setup token. Three roles are supported:</p>
+<h2>Timesheets</h2>
+<p>Track technician time with clock in/out functionality. Timesheets capture start and end times, link to specific jobs, and optionally record GPS coordinates. Manual entry is supported for offline or retrospective time recording.</p>
+
+<h2>Tags</h2>
+<p>Color-coded tags can be applied to customers, jobs, assets, invoices, and any other object type. Tags are admin-configurable and make filtering and categorization visual and fast.</p>
+
+<h2>Custom Fields</h2>
+<p>User-defined fields extend any entity type with the data you need. Configure field definitions per object type in settings, then populate them on individual records.</p>
+
+<h2>Comments</h2>
+<p>Threaded comments on any object enable collaboration. Each comment shows authorship and timestamp for a complete audit trail.</p>
+
+<h2>User Management</h2>
+<p>Manage users with role-based access control. Three roles are supported:</p>
 <ul>
   <li><strong>Admin</strong> &mdash; Full system access</li>
   <li><strong>Tech</strong> &mdash; Field technician access</li>
   <li><strong>Dispatcher</strong> &mdash; Scheduling and dispatch access</li>
 </ul>
+<p>Additional features include welcome emails, password policies, and force password change on first login.</p>
+
+<h2>Company Settings</h2>
+<p>Configure your company profile, branding (logo, colors), email server settings, timezone, document numbering schemes, and security policies. The dark mode theme toggle persists across sessions.</p>
+
+<h2>Auth</h2>
+<p>FreeFSM uses bcrypt-hashed passwords and HTTP-only session cookies for authentication. The initial admin account is created via a setup token. CSRF protection is enabled on all state-changing requests.</p>

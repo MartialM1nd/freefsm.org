@@ -71,14 +71,14 @@
 
 <h2>Phase 2 &mdash; Support Entities + Polish</h2>
 <ul>
-  <li>Projects (grouping jobs under a customer)</li>
+  <li>Projects (grouping jobs under a customer) ✅</li>
   <li>Subtasks (job checklists)</li>
   <li>Polymorphic tags system (admin-configurable)</li>
   <li>Polymorphic custom fields (admin-configurable)</li>
   <li>Polymorphic comments</li>
-  <li>Dashboard with real KPIs</li>
+  <li>Dashboard with real KPIs ✅</li>
   <li>Global search across customers, jobs, invoices</li>
-  <li>Nginx reverse proxy config</li>
+  <li>Nginx reverse proxy config ✅</li>
 </ul>
 
 <h2>Phase 3 &mdash; Operations</h2>
@@ -100,4 +100,13 @@
   <li>Customer portal / self-service booking</li>
   <li>Zapier-compatible webhook triggers</li>
   <li>Mobile-responsive UI refinements</li>
+</ul>
+
+<h2>Multi-Tenant Architecture (SaaS-Ready)</h2>
+<p>The codebase is designed for single-tenant self-hosted deployments today, with infrastructure in place for future multi-tenant SaaS. A future <code>saas</code> branch will implement full tenant isolation via:</p>
+<ul>
+  <li>Row-level tenant isolation with <code>company_id</code> on all entity tables</li>
+  <li>Subdomain-based tenant resolution via <code>Host</code> header</li>
+  <li>Query scoping in services (handlers require zero changes)</li>
+  <li>Existing single-tenant installs remain fully backward compatible</li>
 </ul>
