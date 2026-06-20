@@ -32,4 +32,31 @@ Edit files in `src/` then re-run `node build.js` to regenerate `dist/`. The `dis
 
 ## Deploy
 
-Serve `dist/` with any static server — Caddy, Nginx, GitHub Pages, Netlify, or Cloudflare Pages.
+### Nginx
+
+1. Build the site and copy `dist/` to your server:
+
+```bash
+node build.js
+rsync -avz dist/ user@vps:/opt/freefsm.org/dist/
+```
+
+2. Copy the Nginx config and enable it:
+
+```bash
+sudo cp deploy/freefsm.org.nginx.conf /etc/nginx/sites-available/freefsm.org
+sudo ln -s /etc/nginx/sites-available/freefsm.org /etc/nginx/sites-enabled/
+sudo nginx -t && sudo systemctl reload nginx
+```
+
+3. Obtain an SSL certificate via Certbot:
+
+```bash
+sudo certbot --nginx -d freefsm.org -d www.freefsm.org
+```
+
+4. Certbot auto-reloads Nginx. The config handles `www.freefsm.org` → `freefsm.org` redirect, Gzip, cache headers, and security headers.
+
+### Any static server
+
+Serve `dist/` with Caddy, GitHub Pages, Netlify, or Cloudflare Pages.
