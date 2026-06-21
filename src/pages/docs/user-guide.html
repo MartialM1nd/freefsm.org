@@ -91,5 +91,14 @@
 <h2>Company Settings</h2>
 <p>Configure your company profile, branding (logo, colors), email server settings, timezone, document numbering schemes, and security policies. The dark mode theme toggle persists across sessions.</p>
 
+ <h2>Activity / Audit Log</h2>
+<p>Every create, update, and delete operation is recorded in the audit log. Per-entity activity widgets appear on show pages for customers, jobs, invoices, and other entities, giving you the full history of any record. A dedicated admin-only activity page provides a system-wide audit trail, and recent activity panels appear on every list page for at-a-glance context.</p>
+
+<h2>File Attachments</h2>
+<p>Upload files to customers, jobs, estimates, invoices, and assets. Supported file types are governed by a MIME whitelist for security. Images and PDFs generate inline previews directly in the browser. Files are stored on disk under the directory specified by <code>FREEFSM_UPLOAD_DIR</code>, with a configurable maximum upload size via <code>FREEFSM_MAX_UPLOAD_SIZE</code> (default 25 MB).</p>
+
+<h2>Soft-Delete / Archive</h2>
+<p>Business entities are archived rather than permanently deleted. Archived records are hidden from normal list views but remain in the database. An admin can restore any archived entity from a banner displayed on its show page, making accidental data loss reversible.</p>
+
 <h2>Auth</h2>
 <p>FreeFSM uses bcrypt-hashed passwords and HTTP-only session cookies for authentication. The initial admin account is created via a setup token. CSRF protection is enabled on all state-changing requests.</p>

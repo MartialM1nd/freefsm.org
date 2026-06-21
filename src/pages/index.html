@@ -5,7 +5,7 @@
     </div>
     <div class="hero-text">
       <h1>Open-source field service<br>management for <span>FreeBSD &amp; Linux</span></h1>
-      <p>FreeFSM is a self-hosted, open-source field service management platform. One static Go binary, PostgreSQL backend, zero npm dependencies. Manage customers, jobs, assets, projects, timesheets, estimates, invoices, and more &mdash; all from your own infrastructure.</p>
+      <p>FreeFSM is a self-hosted, open-source field service management platform. One static Go binary, PostgreSQL backend, zero npm dependencies. Manage customers, jobs, assets, projects, timesheets, estimates, invoices, file attachments, audit logs, and more &mdash; all from your own infrastructure.</p>
       <div class="hero-btns">
         <a href="/docs/getting-started.html" class="btn btn-primary">Get Started</a>
         <a href="https://github.com/MartialM1nd/freefsm" class="btn btn-secondary">View on GitHub</a>
@@ -125,6 +125,34 @@
         </svg>
         <h3>Auth &amp; Security</h3>
         <p>Setup token for initial admin, bcrypt password hashing, HTTP-only session cookies, and CSRF protection.</p>
+      </div>
+      <div class="feature-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+        </svg>
+        <h3>Activity / Audit Log</h3>
+        <p>Every mutation tracked across all entities with per-entity activity widgets, admin-only admin log, and recent activity panels on every list page.</p>
+      </div>
+      <div class="feature-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
+        </svg>
+        <h3>File Attachments</h3>
+        <p>Polymorphic uploads on customers, jobs, estimates, invoices, and assets with MIME whitelist, inline preview for images/PDFs, and disk-based storage.</p>
+      </div>
+      <div class="feature-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+        </svg>
+        <h3>Soft-Delete / Archive</h3>
+        <p>Business entities archived instead of hard-deleted with admin restore from the show page banner &mdash; nothing is truly lost.</p>
+      </div>
+      <div class="feature-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        <h3>Dependency Protection</h3>
+        <p>Prevents deletion of configuration items like tags, asset types, and statuses when they are still referenced by other records.</p>
       </div>
     </div>
   </div>
