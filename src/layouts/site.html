@@ -3,25 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FreeFSM — Free Field Service Manager</title>
-  <meta name="description" content="Self-hosted, open-source field service management for FreeBSD and Linux.">
+  <title>{{title}}</title>
+  <meta name="description" content="{{description}}">
   <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
-<body class="docs-page">
+<body{{bodyClassAttr}}>
   <nav class="nav">
     <div class="nav-inner container">
       <a href="/" class="logo">
         <img class="logo-icon" src="/assets/images/apple-touch-icon.png" alt="">
         <span class="logo-text">FreeFSM</span>
       </a>
-      <div class="nav-links">
-        <a href="/">Home</a>
-        <a href="/features.html">Features</a>
-        <a href="/docs/" class="active">Docs</a>
+      <div class="nav-links" id="site-nav">
+        <a href="/"{{homeActiveAttr}}>Home</a>
+        <a href="/features.html"{{featuresActiveAttr}}>Features</a>
+        <a href="/docs/"{{docsActiveAttr}}>Docs</a>
         <a href="https://github.com/MartialM1nd/freefsm" class="nav-cta">GitHub</a>
       </div>
       <button class="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
@@ -32,30 +32,13 @@
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
         </svg>
       </button>
-      <button class="nav-toggle" aria-label="Toggle navigation">
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-controls="{{navToggleControls}}" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
-  <div class="docs-layout container">
-    <aside class="docs-sidebar" id="docs-sidebar">
-      <nav class="docs-nav">
-        <a href="/docs/" class="docs-nav-title">Documentation</a>
-        <a href="/docs/getting-started.html">Getting Started</a>
-        <a href="/docs/configuration.html">Configuration</a>
-        <a href="/docs/user-guide.html">User Guide</a>
-        <a href="/docs/deployment.html">Deployment</a>
-        <a href="/docs/development.html">Development</a>
-        <a href="/docs/architecture.html">Architecture</a>
-        <a href="/docs/roadmap.html">Roadmap</a>
-        <a href="/docs/api.html">API Reference</a>
-      </nav>
-    </aside>
-    <main class="docs-content">
-      {{content}}
-    </main>
-  </div>
+  {{mainContent}}
 
   <footer class="footer">
     <div class="container footer-inner">

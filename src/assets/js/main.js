@@ -3,13 +3,27 @@
 
   // ── Theme ──
   const themeToggle = document.querySelector('.theme-toggle');
-  const stored = localStorage.getItem('theme');
+  const getStoredTheme = () => {
+    try {
+      return localStorage.getItem('theme');
+    } catch {
+      return null;
+    }
+  };
+  const setStoredTheme = theme => {
+    try {
+      localStorage.setItem('theme', theme);
+    } catch {
+      // Ignore storage failures in private browsing or locked-down contexts.
+    }
+  };
+  const stored = getStoredTheme();
   if (stored === 'light') document.documentElement.classList.add('light');
 
   themeToggle?.addEventListener('click', () => {
     document.documentElement.classList.toggle('light');
     const isLight = document.documentElement.classList.contains('light');
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    setStoredTheme(isLight ? 'light' : 'dark');
   });
 
   // ── Mobile Nav ──
@@ -18,11 +32,15 @@
   const docsSidebar = document.querySelector('.docs-sidebar');
 
   navToggle?.addEventListener('click', () => {
+    let isOpen = false;
+
     if (docsSidebar) {
-      docsSidebar.classList.toggle('open');
+      isOpen = docsSidebar.classList.toggle('open');
     } else {
-      navLinks?.classList.toggle('open');
+      isOpen = navLinks?.classList.toggle('open') || false;
     }
+
+    navToggle.setAttribute('aria-expanded', String(isOpen));
   });
 
   // Close mobile nav on link click
@@ -30,6 +48,7 @@
     link.addEventListener('click', () => {
       navLinks?.classList.remove('open');
       docsSidebar?.classList.remove('open');
+      navToggle?.setAttribute('aria-expanded', 'false');
     });
   });
 

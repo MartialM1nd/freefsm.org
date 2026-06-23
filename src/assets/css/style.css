@@ -137,6 +137,9 @@ body{background:var(--bg);min-height:100vh}
 .code-block .comment{color:#6b7280;font-style:italic}
 .code-block .string{color:#a3e635}
 .code-block .keyword{color:#818cf8}
+.code-block-flush{border-top-left-radius:0;border-top-right-radius:0;margin:0}
+.code-block-compact{margin:12px 0 0}
+.card-title-flush{margin-top:0}
 
 /* ── Quick Start Section ── */
 .quickstart{

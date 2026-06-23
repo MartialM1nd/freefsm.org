@@ -190,7 +190,7 @@
         <span>Terminal</span>
         <span>bash</span>
       </div>
-      <div class="code-block" style="border-top-left-radius:0;border-top-right-radius:0;margin:0">
+      <div class="code-block code-block-flush">
 <pre><span class="comment"># Clone, configure, and run</span>
 git clone https://github.com/MartialM1nd/freefsm.git
 cd freefsm
@@ -212,15 +212,15 @@ cp .env.example .env
     </div>
     <div class="features-grid">
       <div class="feature-card">
-        <h3 style="margin-top:0">Linux &mdash; systemd</h3>
-        <div class="code-block" style="margin:12px 0 0">
+        <h3 class="card-title-flush">Linux &mdash; systemd</h3>
+        <div class="code-block code-block-compact">
 <pre><span class="cmd">make install-linux</span>
 <span class="cmd">systemctl enable --now freefsm</span></pre>
         </div>
       </div>
       <div class="feature-card">
-        <h3 style="margin-top:0">FreeBSD &mdash; rc.d</h3>
-        <div class="code-block" style="margin:12px 0 0">
+        <h3 class="card-title-flush">FreeBSD &mdash; rc.d</h3>
+        <div class="code-block code-block-compact">
 <pre><span class="cmd">gmake install-freebsd</span>
 <span class="cmd">service freefsm start</span></pre>
         </div>
